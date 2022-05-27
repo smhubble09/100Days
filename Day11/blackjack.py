@@ -4,12 +4,12 @@
 ## There are no jokers. 
 ## The Jack/Queen/King all count as 10.
 ## The the Ace can count as 11 or 1.
-## Use the following list as the deck of cards:
 
 ## The cards in the list have equal probability of being drawn.
+## Deck of cards:
+##cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 ## Cards are not removed from the deck as they are drawn.
 ## The computer is the dealer.
-
 from random import randint
 import random
 import os
@@ -29,24 +29,24 @@ def deal_card():
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
     return random.choice(cards)
 
-def final_score(p_score, p_hand, d_score, d_hand):
-    """Prints final score and who wins"""
-    print(f"\nYou're final hand: {p_hand}, final score: {p_score}")
-    print(f"Dealer's final hand: {d_hand}, final score: {d_score}\n")
-    if p_score > 21:
-        print("You went over. You lose.")
+def final_score(p_score, d_score):
+    """Returns final score and who wins"""
+    if d_score == 0:
+        return "Dealer got Blackjack! You lose."
+    elif p_score == 0:
+        return "You got Blackjack! You win!"
+    elif p_score > 21:
+        return "You went over. You lose."
     elif d_score > 21:
-        print("Dealer bust. You win!")
+        return "Dealer bust. You win!"
     elif p_score > d_score:
-        print("You win!")
+        return "You win!"
     elif p_score == d_score:
-        print("It's draw.")
+        return "It's draw."
     else:
-        print("Dealer wins. You lose.")
+        return "Dealer wins. You lose."
 
 def blackjack():
-    # Deck of cards:
-    #cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
     print(logo)
 
     #Generate random cards for Dealer & Player
@@ -69,34 +69,24 @@ def blackjack():
         print(f"Dealer's first card: {dealer_hand[0]}\n")
 
         #Detect if player or dealer has blackjack
-        if player_score == 0:
-            if dealer_score == 0:
-                draw_again = False
-                print(f"\nYou're final hand: {player_hand}")
-                print(f"Dealer's final hand: {dealer_hand}\n")
-                print("Dealer got Blackjack! You lose.")
-            else:
-                draw_again = False
-                print(f"\nYou're final hand: {player_hand}")
-                print(f"Dealer's final hand: {dealer_hand}\n")
-                print("You got Blackjack! You win!")
-        else:             
-            #You lose if score is over 21
-            if player_score > 21:
-                draw_again = False
-                final_score(player_score, player_hand, dealer_score, dealer_hand)
-        
+        if player_score == 0 or dealer_score == 0 or player_score >21:
+            draw_again = False
+            final_score(player_score, dealer_score)
+        else:
             #Do you want another card?
-            elif input ("Type 'y' to get another card, type 'n' to pass: ") == "y":
-                player_hand.append(deal_card)
+            if input ("Type 'y' to get another card, type 'n' to pass: ") == "y":
+                player_hand.append(deal_card())
             else:
-                while dealer_score < 17:
-                    dealer_hand.append(deal_card)
-                    dealer_score = calculate_score(dealer_hand)
                 draw_again = False
-                #Print the final score
-                final_score(player_score, player_hand, dealer_score, dealer_hand)
+                #Dealer draws
+                while dealer_score < 17:
+                    dealer_hand.append(deal_card())
+                    dealer_score = calculate_score(dealer_hand)
                 
+    #Print the final score
+    print(f"\nYou're final hand: {player_hand}, final score: {player_score}")
+    print(f"Dealer's final hand: {dealer_hand}, final score: {dealer_score}\n")
+    print(final_score(player_score, dealer_score))
     #Do you want to play again?
     if input("\nDo you want to play a game of Blackjack? Type 'y' or 'n': ") == "y":
         os.system("cls")
