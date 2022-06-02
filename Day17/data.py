@@ -129,7 +129,7 @@ question_data = [
             "category": "Animals",
             "type": "boolean",
             "difficulty": "easy",
-            "question": "Rabbits can see what&#039;s behind themselves without turning their heads.",
+            "question": "Rabbits can see what's behind themselves without turning their heads.",
             "correct_answer": "True",
             
         },
@@ -145,7 +145,7 @@ question_data = [
             "category": "Animals",
             "type": "boolean",
             "difficulty": "easy",
-            "question": "The freshwater amphibian, the Axolotl, can regrow it&#039;s limbs.",
+            "question": "The freshwater amphibian, the Axolotl, can regrow it's limbs.",
             "correct_answer": "True",
             
         }
