@@ -1,4 +1,3 @@
-from tkinter import scrolledtext
 from turtle import Screen
 import time
 from snake import Snake
