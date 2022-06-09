@@ -49,11 +49,7 @@ while len(guessed_states) < 50:
                 new_state = StateName(int(state_data.x),int(state_data.y),answer_state)
 
 #States to learn
-missed_states = []
-
-for state in data.state:
-    if state not in guessed_states:
-        missed_states.append(state)
+missed_states = [state for state in data.state if state not in guessed_states]
 
 data_dict = {
     "States to Learn": missed_states
