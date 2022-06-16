@@ -1,14 +1,15 @@
 import requests
+import os
 from twilio.rest import Client
 
-account_sid = "AccountSIDHere"
-auth_token = "AuthTokenHere"
+account_sid = os.environ.get("ACCOUNT_SID")
+auth_token = os.environ.get("AUTH_TOKEN")
 
 parameters = {
     "lat": 35.939030,
     "lon": -77.800240,
     "exclude": "current,minutely,daily",
-    "appid": "874471794647a9b0aeb8c413f20a695a",
+    "appid": os.environ.get("WEATHER_APPID"),
 }
 
 response = requests.get("https://api.openweathermap.org/data/2.5/onecall", parameters)
