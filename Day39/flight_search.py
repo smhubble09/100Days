@@ -7,7 +7,6 @@ TEQUILA_ENDPOINT = "https://tequila-api.kiwi.com"
 TEQUILA_API_KEY = os.environ.get("TEQUILA_API_KEY")
 class FlightSearch:
     #This class is responsible for talking to the Flight Search API.
-    
     def get_dest_codes(self, city_name):
         location_endpoint = f"{TEQUILA_ENDPOINT}/locations/query"
         location_headers = {"apikey": TEQUILA_API_KEY}

@@ -5,8 +5,8 @@ USERNAME = os.environ.get("USERNAME")
 PROJECT_NAME = "flightDeals"
 SHEET_NAME = "prices"
 SHEETY_ENDPOINT = f"https://api.sheety.co/{USERNAME}/{PROJECT_NAME}/{SHEET_NAME}"
-
 BEARER = os.environ.get("BEARER")
+
 class DataManager:
     #This class is responsible for talking to the Google Sheet.
     def __init__(self) -> None:
