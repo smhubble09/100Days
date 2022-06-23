@@ -83,4 +83,4 @@ if abs(stock_percent_difference) >= 5:
             from_="NumberGoesHere",
             to="AnotherNumberGoesHere"
         )
-    print(message.status)
+    print(sms_message.status)
