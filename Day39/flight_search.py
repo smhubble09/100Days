@@ -1,9 +1,10 @@
 import requests
+import os
 from flight_data import FlightData
 from notification_manager import NotificationManager
 
 TEQUILA_ENDPOINT = "https://tequila-api.kiwi.com"
-TEQUILA_API_KEY = "2Y6ICO6SfEwK5Ivp1y619tGr6a8gssNy"
+TEQUILA_API_KEY = os.environ.get("TEQUILA_API_KEY")
 class FlightSearch:
     #This class is responsible for talking to the Flight Search API.
     
