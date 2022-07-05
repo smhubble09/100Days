@@ -50,6 +50,7 @@ class InstaFollower:
                 self.driver.find_element(By.CSS_SELECTOR, "button ._a9_1").click()
             finally:
                 sleep(1)
+        self.driver.quit()
 
 
 bot = InstaFollower()
